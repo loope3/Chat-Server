@@ -12,9 +12,11 @@ public class config implements WebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
         //endpoint to send messages in message broker context
-        config.enableSimpleBroker("/topic");
+        config.enableSimpleBroker("/topic", "/user");
         //endpoint to send messages in application context
         config.setApplicationDestinationPrefixes("/app");
+        //for private messages
+        config.setUserDestinationPrefix("/user");
     }
 
     @Override

@@ -7,5 +7,6 @@ import lombok.Data;
 @AllArgsConstructor
 public class User {
     private final String id;
+    private final String serialId;
     private final String username;
 }

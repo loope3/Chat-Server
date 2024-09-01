@@ -10,6 +10,7 @@ import java.time.Instant;
 @AllArgsConstructor
 public class Message {
     private final User user;
+    private final String receiverId;
     private final String comment;
     private final Action action;
     private final Instant timestamp;
