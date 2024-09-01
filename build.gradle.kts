@@ -26,11 +26,11 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-rsocket")
+	implementation("org.springframework.boot:spring-boot-starter-web:3.3.3")
+	implementation("org.springframework.boot:spring-boot-starter-websocket:3.3.3")
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("io.projectreactor:reactor-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
