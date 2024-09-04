@@ -1,18 +1,25 @@
 package com.chatApp.Server_Socket.chatController;
 
+import com.chatApp.Server_Socket.model.*;
 import com.chatApp.Server_Socket.service.MemberStore;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.socket.messaging.SessionConnectEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
-import com.chatApp.Server_Socket.model.Action;
-import com.chatApp.Server_Socket.model.Message;
-import com.chatApp.Server_Socket.model.User;
+import org.springframework.web.util.HtmlUtils;
 
 import java.time.Instant;
 import java.util.List;
@@ -31,6 +38,7 @@ public class ChatController {
 
     @MessageMapping("/user")
     public void getusers(User user, SimpMessageHeaderAccessor headerAccessor) throws Exception {
+        System.out.println("Connected to session");
         User newUser = new User(user.getId(), null, user.getUsername());
         headerAccessor.getSessionAttributes().put("user", newUser);
         memberStore.addMember(newUser);
@@ -70,6 +78,11 @@ public class ChatController {
         simpMessagingTemplate.convertAndSend("/topic/messages", newMessage);
     }
 
+    @MessageMapping("/messageSimple")
+    public void sendMessageSimple(String message)  {
+        simpMessagingTemplate.convertAndSend("/topic/messageSimple", message);
+    }
+
     @MessageMapping("/privateMessage")
     public void getPrivateMessage(Message message) {
         Message newMessage = new Message(new User(null, message.getUser().getSerialId(), message.getUser().getUsername()), message.getReceiverId(), message.getComment(), message.getAction(), Instant.now());
@@ -82,5 +95,4 @@ public class ChatController {
                 sendUser -> simpMessagingTemplate.convertAndSendToUser(sendUser.getId(), "/topic/users/", memberStore.filterMemberListByUser(memberList, sendUser))
         );
     }
-
 }
