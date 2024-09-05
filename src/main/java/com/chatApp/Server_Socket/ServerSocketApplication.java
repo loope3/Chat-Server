@@ -9,14 +9,7 @@ public class ServerSocketApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ServerSocketApplication.class, args);
 		System.out.println("hello world, this will be our socket server program");
-		System.out.println("hello world, this will be our socket server program");
-
-		System.out.println("hello world, this will be our socket server program");
-		System.out.println("hello world, this will be our socket server program");
-		System.out.println("hello world, this will be our socket server program");
-		System.out.println("hello world, this will be our socket server program");
-		System.out.println("hello world, this will be our socket server program");
-
+		System.out.println("this is a branch");
 
 
 
