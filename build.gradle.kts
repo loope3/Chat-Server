@@ -28,6 +28,9 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web:3.3.3")
 	implementation("org.springframework.boot:spring-boot-starter-websocket:3.3.3")
+	implementation("org.springframework.boot:spring-boot-starter-data-redis:3.3.3")
+	implementation("software.amazon.awssdk:dynamodb-enhanced:2.17.8")
+	implementation("com.fasterxml.jackson.core:jackson-databind:2.15.0") 
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
