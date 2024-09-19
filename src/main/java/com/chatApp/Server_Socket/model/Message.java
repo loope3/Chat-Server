@@ -42,6 +42,7 @@ public class Message {
         this.user = user;
     }
 
+    @DynamoDbSortKey
     @DynamoDbAttribute("ReceiverId")
     public String getReceiverId() {
         return receiverId;

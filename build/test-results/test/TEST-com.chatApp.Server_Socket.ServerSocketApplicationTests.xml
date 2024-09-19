@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.chatApp.Server_Socket.ServerSocketApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-09-01T20:52:28" hostname="orpheus" time="0.625">
+<testsuite name="com.chatApp.Server_Socket.ServerSocketApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-09-19T20:20:24" hostname="DESKTOP-EENFPE8" time="0.819">
   <properties/>
-  <testcase name="contextLoads()" classname="com.chatApp.Server_Socket.ServerSocketApplicationTests" time="0.625"/>
-  <system-out><![CDATA[16:52:27.516 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.chatApp.Server_Socket.ServerSocketApplicationTests]: ServerSocketApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-16:52:27.597 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.chatApp.Server_Socket.ServerSocketApplication for test class com.chatApp.Server_Socket.ServerSocketApplicationTests
+  <testcase name="contextLoads()" classname="com.chatApp.Server_Socket.ServerSocketApplicationTests" time="0.819"/>
+  <system-out><![CDATA[16:20:17.814 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.chatApp.Server_Socket.ServerSocketApplicationTests]: ServerSocketApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+16:20:17.992 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.chatApp.Server_Socket.ServerSocketApplication for test class com.chatApp.Server_Socket.ServerSocketApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -14,12 +14,15 @@
 
  :: Spring Boot ::                (v3.3.3)
 
-2024-09-01T16:52:27.939-04:00  INFO 12315 --- [Server_Socket] [    Test worker] c.c.S.ServerSocketApplicationTests       : Starting ServerSocketApplicationTests using Java 17.0.12 with PID 12315 (started by orpheus in /home/orpheus/school/FINAL/Chat-Server2)
-2024-09-01T16:52:27.940-04:00  INFO 12315 --- [Server_Socket] [    Test worker] c.c.S.ServerSocketApplicationTests       : No active profile set, falling back to 1 default profile: "default"
-2024-09-01T16:52:28.869-04:00  INFO 12315 --- [Server_Socket] [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2024-09-01T16:52:28.871-04:00  INFO 12315 --- [Server_Socket] [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@3f6f3cc]]
-2024-09-01T16:52:28.873-04:00  INFO 12315 --- [Server_Socket] [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2024-09-01T16:52:28.887-04:00  INFO 12315 --- [Server_Socket] [    Test worker] c.c.S.ServerSocketApplicationTests       : Started ServerSocketApplicationTests in 1.182 seconds (process running for 2.014)
+2024-09-19T16:20:18.763-04:00  INFO 26312 --- [Server_Socket] [    Test worker] c.c.S.ServerSocketApplicationTests       : Starting ServerSocketApplicationTests using Java 17.0.12 with PID 26312 (started by pengu in C:\Users\pengu\Chat-Server)
+2024-09-19T16:20:18.765-04:00  INFO 26312 --- [Server_Socket] [    Test worker] c.c.S.ServerSocketApplicationTests       : No active profile set, falling back to 1 default profile: "default"
+2024-09-19T16:20:20.153-04:00  INFO 26312 --- [Server_Socket] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-09-19T16:20:20.166-04:00  INFO 26312 --- [Server_Socket] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-09-19T16:20:20.284-04:00  INFO 26312 --- [Server_Socket] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 77 ms. Found 0 Redis repository interfaces.
+2024-09-19T16:20:24.061-04:00  INFO 26312 --- [Server_Socket] [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2024-09-19T16:20:24.072-04:00  INFO 26312 --- [Server_Socket] [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@470b5213]]
+2024-09-19T16:20:24.073-04:00  INFO 26312 --- [Server_Socket] [    Test worker] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2024-09-19T16:20:24.113-04:00  INFO 26312 --- [Server_Socket] [    Test worker] c.c.S.ServerSocketApplicationTests       : Started ServerSocketApplicationTests in 5.778 seconds (process running for 8.398)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,7 +1,8 @@
 package com.chatApp.Server_Socket.chatController;
 
 import com.chatApp.Server_Socket.service.MemberStore;
-import com.chatApp.Server_Socket.service.DynamoMessageService;
+
+
 import org.springframework.context.event.EventListener;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
@@ -14,6 +15,7 @@ import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 import com.chatApp.Server_Socket.model.Action;
 import com.chatApp.Server_Socket.model.Message;
 import com.chatApp.Server_Socket.model.User;
+import com.chatApp.Server_Socket.repository.DynamoMessageRepo;
 
 import java.time.Instant;
 import java.util.List;
@@ -24,12 +26,12 @@ public class ChatController {
 
     private final MemberStore memberStore;
     private final SimpMessagingTemplate simpMessagingTemplate;
-    private final DynamoMessageService dynamoMessageService;
-
-    public ChatController(MemberStore memberStore, SimpMessagingTemplate simpMessagingTemplate, DynamoMessageService dynamoMessageService) {
+    private final DynamoMessageRepo dynamoMessageRepo;
+    
+    public ChatController(MemberStore memberStore, SimpMessagingTemplate simpMessagingTemplate, DynamoMessageRepo dynamoMessageRepo) {
         this.memberStore = memberStore;
         this.simpMessagingTemplate = simpMessagingTemplate;
-        this.dynamoMessageService = dynamoMessageService;
+        this.dynamoMessageRepo = dynamoMessageRepo;
     }
 
     @MessageMapping("/user")
@@ -39,7 +41,7 @@ public class ChatController {
         memberStore.addMember(newUser);
         sendMembersList();
 
-        List<Message> messageHistory = dynamoMessageService.getAllMessages();
+        List<Message> messageHistory = dynamoMessageRepo.getAllMessages();
         messageHistory.forEach(message -> simpMessagingTemplate.convertAndSendToUser(newUser.getId(), "/topic/messages", message));
 
         Message newMessage = new Message(new User(null, null, user.getUsername()), null, null, Action.JOINED, Instant.now());
@@ -47,7 +49,7 @@ public class ChatController {
         newMessage.setId(java.util.UUID.randomUUID().toString());
         simpMessagingTemplate.convertAndSend("/topic/messages", newMessage);
 
-        dynamoMessageService.saveMessage(newMessage);
+        dynamoMessageRepo.saveMessage(newMessage);
     }
 
     @EventListener
@@ -74,7 +76,7 @@ public class ChatController {
         message.setId(java.util.UUID.randomUUID().toString());
         simpMessagingTemplate.convertAndSend("/topic/messages", message);
 
-        dynamoMessageService.saveMessage(message);
+        dynamoMessageRepo.saveMessage(message);
     }
 
     @MessageMapping("/message")
@@ -90,7 +92,7 @@ public class ChatController {
         newMessage.setId(java.util.UUID.randomUUID().toString());
         simpMessagingTemplate.convertAndSend("/topic/messages", newMessage);
 
-        dynamoMessageService.saveMessage(newMessage);
+        dynamoMessageRepo.saveMessage(message);
     }
 
     @MessageMapping("/privateMessage")
@@ -110,7 +112,7 @@ public class ChatController {
             newMessage
         );
 
-        dynamoMessageService.saveMessage(newMessage);
+        dynamoMessageRepo.saveMessage(message);
     }
 
     private void sendMembersList() {
